@@ -1,7 +1,10 @@
 import React from "react";
 import Navbar from "./Navbar";
+import { useState } from "react";
 
 const Header = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
       className="min-h-screen mb-4 bg-center bg-cover flex items-center 
@@ -17,12 +20,19 @@ const Header = () => {
           <span className="hover:text-teal-300">dreams</span>
         </h2>
         <div className="space-x-6 mt-16 font-bold">
-          <a href="Projects" className="border border-white px-8 py-3 rounded">
+          <a
+            href="Projects"
+            className={`border  px-8 py-3 rounded ${
+              isHovered ? "bg-blue-500 " : "border-white"
+            }`}
+          >
             Projects
           </a>
           <a
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             href="#Contact"
-            className=" bg-blue-500 border border-white px-8 py-3 rounded"
+            className=" bg-blue-500 border border-white px-8 py-3 rounded hover:bg-transparent"
           >
             Contact us
           </a>

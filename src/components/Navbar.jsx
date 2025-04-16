@@ -1,63 +1,67 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi"; // Importing icons
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  const handleMenuToggle = () => {
+    setShowMobileMenu((prevState) => !prevState);
+  };
 
   return (
     <div className="absolute top-0 left-0 w-full z-10">
       <div
         className="container mx-auto flex justify-between
-      items-center py-4 px-6 md:px-20 lg:px-32 bg-transparent text-white"
+        items-center py-4 px-6 md:px-20 lg:px-32 bg-transparent text-white"
       >
         <h1 className="mr-6 font-bold text-2xl">Logo</h1>
         <ul className="hidden md:flex gap-7 text-white font-medium">
           <a href="#header" className="cursor-pointer hover:text-gray-800">
             Home
           </a>
-          <a href="#header" className="cursor-pointer  hover:text-gray-800">
+          <a href="#about" className="cursor-pointer hover:text-gray-800">
             About
           </a>
-          <a href="#header" className="cursor-pointer hover:text-gray-800">
-            Projects
-          </a>
-          <a href="#header" className="cursor-pointer hover:text-gray-800">
-            Testimonials
-          </a>
-        </ul>
-        <button className="hidden md:block bg-white px-8 py-2 rounded-full text-black font-weight-4 font-bold">
-          Sign Up
-        </button>
-        <img
-          onChange={() => setShowMobileMenu(true)}
-          src="menu-icom.png"
-          alt=""
-          className="md-hidden w-7"
-        />
-      </div>
-
-      <div
-        className={`md:hidden ${
-          showMobileMenu ? "fixed w-full" : "h-0 w-0"
-        }  right-0 top-0 bottom-0 overflow-hidden bg-white transition-all`}
-      >
-        <div className=" flex justify-end p-6 cursor-pointer">
-          <img src="X" className="w-6" alt="" />
-        </div>
-        <ul className="flex flex-col  items-center gap-2 mt-5 px-5 text-lg font-medium">
-          <a href="#Header" className="px-4 py-2 rounded-full inline-block">
-            Home
-          </a>
-          <a href="#About" className="px-4 py-2 rounded-full inline-block">
-            About
-          </a>
-          <a href="#Projects" className="px-4 py-2 rounded-full inline-block">
+          <a href="#projects" className="cursor-pointer hover:text-gray-800">
             Projects
           </a>
           <a
-            href="#Testimonials"
-            className="px-4 py-2 rounded-full inline-block"
+            href="#testimonials"
+            className="cursor-pointer hover:text-gray-800"
           >
+            Testimonials
+          </a>
+        </ul>
+        <button className="hidden md:block bg-white px-8 py-2 rounded-full text-black font-bold">
+          Sign Up
+        </button>
+
+        {/* Menu icon toggle */}
+        <div
+          className="md:hidden text-3xl text-white cursor-pointer"
+          onClick={handleMenuToggle}
+        >
+          {showMobileMenu ? <FiX /> : <FiMenu />}
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden fixed top-0 right-0 bottom-0 transition-all duration-300 bg-white z-20 ${
+          showMobileMenu ? "w-full" : "w-0 overflow-hidden"
+        }`}
+      >
+        <ul className="flex flex-col items-center gap-4 mt-20 px-5 text-lg font-medium text-black">
+          <a href="#header" onClick={handleMenuToggle}>
+            Home
+          </a>
+          <a href="#about" onClick={handleMenuToggle}>
+            About
+          </a>
+          <a href="#projects" onClick={handleMenuToggle}>
+            Projects
+          </a>
+          <a href="#testimonials" onClick={handleMenuToggle}>
             Testimonials
           </a>
         </ul>
