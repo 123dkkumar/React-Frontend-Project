@@ -16,7 +16,7 @@ const Navbar = () => {
       >
         <h1 className="mr-6 font-bold text-2xl">Logo</h1>
         <ul className="hidden md:flex gap-7 text-white font-medium">
-          <a href="#header" className="cursor-pointer hover:text-gray-800">
+          <a href="#header" className="cursor-pointer hover:text-gray-800 ">
             Home
           </a>
           <a href="#about" className="cursor-pointer hover:text-gray-800">
